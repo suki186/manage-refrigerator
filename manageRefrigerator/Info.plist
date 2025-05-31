@@ -21,5 +21,11 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>netmarbleL.ttf</string>
+		<string>netmarbleM.ttf</string>
+		<string>netmarbleB.ttf</string>
+	</array>
 </dict>
 </plist>
