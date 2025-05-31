@@ -8,10 +8,21 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
+    @IBOutlet weak var coldLabel: UILabel!
+    @IBOutlet weak var frozenLabel: UILabel!
+    @IBOutlet weak var roomLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        // Label 테두리
+        coldLabel.layer.cornerRadius = 20
+        coldLabel.clipsToBounds = true
+        frozenLabel.layer.cornerRadius = 20
+        frozenLabel.clipsToBounds = true
+        roomLabel.layer.cornerRadius = 20
+        roomLabel.clipsToBounds = true
     }
 
 
