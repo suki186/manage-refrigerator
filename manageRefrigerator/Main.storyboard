@@ -148,8 +148,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="재료" id="9pi-E5-Ra2">
-                        <imageReference key="selectedImage" image="cube" catalog="system" variableValue="0.0"/>
+                    <tabBarItem key="tabBarItem" title="재료" image="cube" catalog="system" id="9pi-E5-Ra2">
+                        <color key="badgeColor" red="0.33725491169999999" green="0.69803923369999998" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <imageReference key="selectedImage" image="cube.fill" catalog="system" variableValue="0.0"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="coldLabel" destination="KmT-yk-gkM" id="epH-vr-KpS"/>
@@ -458,7 +459,9 @@
                         <viewLayoutGuide key="safeArea" id="n35-eY-U4C"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="레시피" selectedImage="star" catalog="system" id="MJo-Ce-k28"/>
+                    <tabBarItem key="tabBarItem" title="레시피" image="star" catalog="system" selectedImage="star.fill" id="MJo-Ce-k28">
+                        <color key="badgeColor" red="0.33725491169999999" green="0.69803923369999998" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="MyRecipeButton" destination="BWZ-3Q-X0C" id="8Wl-0L-aWK"/>
                         <outlet property="collectionView" destination="CXR-9I-PFj" id="C0o-bm-HMc"/>
@@ -540,7 +543,9 @@
                         <viewLayoutGuide key="safeArea" id="ytz-WE-7lG"/>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.98431372640000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="구매" selectedImage="cart" catalog="system" id="9bW-Ru-29s"/>
+                    <tabBarItem key="tabBarItem" title="구매" image="cart" catalog="system" selectedImage="cart.fill" id="9bW-Ru-29s">
+                        <color key="badgeColor" red="0.33725491169999999" green="0.69803923369999998" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="collectionView" destination="Cpz-EL-a4X" id="onH-cc-6jU"/>
                     </connections>
@@ -603,7 +608,9 @@
                         <viewLayoutGuide key="safeArea" id="whS-qa-aeg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="내 정보" selectedImage="person" catalog="system" id="o0J-tm-hxA"/>
+                    <tabBarItem key="tabBarItem" title="내 정보" image="person" catalog="system" selectedImage="person.fill" id="o0J-tm-hxA">
+                        <color key="badgeColor" red="0.33725491169999999" green="0.69803923369999998" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="IdLabel" destination="yBu-Gt-0xo" id="NHZ-8g-1kW"/>
                         <outlet property="InfoContainer" destination="9r6-Sn-6Bf" id="aTJ-5X-aJL"/>
@@ -901,22 +908,26 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Jdg-jJ-acD"/>
+        <segue reference="JZz-5E-ucN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
         <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="cart" catalog="system" width="128" height="102"/>
+        <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="cube" catalog="system" width="125" height="128"/>
+        <image name="cube.fill" catalog="system" width="128" height="128"/>
         <image name="image 1.png" width="393" height="494"/>
         <image name="location.circle" catalog="system" width="128" height="123"/>
         <image name="logo-img2.png" width="225" height="145"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="minus" catalog="system" width="128" height="26"/>
         <image name="person" catalog="system" width="128" height="121"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="timer" catalog="system" width="128" height="123"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <systemColor name="systemBackgroundColor">
