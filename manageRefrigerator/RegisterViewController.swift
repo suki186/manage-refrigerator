@@ -56,18 +56,14 @@ class RegisterViewController: UIViewController, UICollectionViewDelegate, UIColl
         super.viewDidLoad()
 
         // TextField 테두리 디자인
-        matTextField.layer.borderColor = UIColor(red: 98/255, green: 209/255, blue: 239/255, alpha: 1.0).cgColor
-        matTextField.layer.borderWidth = 2.0
-        matTextField.layer.cornerRadius = 15.0
-        matTextField.clipsToBounds = true
-        matNumField.layer.borderColor = UIColor(red: 98/255, green: 209/255, blue: 239/255, alpha: 1.0).cgColor
-        matNumField.layer.borderWidth = 2.0
-        matNumField.layer.cornerRadius = 15.0
-        matNumField.clipsToBounds = true
-        dateContainer.layer.borderColor = UIColor(red: 98/255, green: 209/255, blue: 239/255, alpha: 1.0).cgColor
-        dateContainer.layer.borderWidth = 2.0
-        dateContainer.layer.cornerRadius = 15.0
-        dateContainer.clipsToBounds = true
+        let borderColor = UIColor(red: 98/255, green: 209/255, blue: 239/255, alpha: 1.0)
+
+        [matTextField, matNumField, dateContainer].forEach { view in
+            view?.layer.borderColor = borderColor.cgColor
+            view?.layer.borderWidth = 2.0
+            view?.layer.cornerRadius = 15.0
+            view?.clipsToBounds = true
+        }
         
         collectionView.delegate = self
         collectionView.dataSource = self
