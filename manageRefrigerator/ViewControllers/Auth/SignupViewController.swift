@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignupViewController: UIViewController {
     
@@ -38,14 +39,32 @@ class SignupViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func signUpTapped(_ sender: UIButton) {
+        let email = idTextField.text ?? ""
+        let password = pwTextField.text ?? ""
+        let repeatPassword = rpwTextField.text ?? ""
+        
+        
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                print("회원가입 실패: \(error.localizedDescription)")
+            } else {
+                print("회원가입 성공: \(authResult?.user.email ?? "")")
+                self.showAlert(title: "환영합니다", message: "FRISH와 함께 깨끗한 냉장고를 만들어보세요!") {
+                    // 회원가입 성공 후 로그인 페이지로 돌아가기
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
     }
-    */
+    
+    func showAlert(title: String, message: String, completion: @escaping () -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default) { _ in
+            completion()
+        })
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 
 }
