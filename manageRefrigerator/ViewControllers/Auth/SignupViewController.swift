@@ -44,6 +44,18 @@ class SignupViewController: UIViewController {
         let password = pwTextField.text ?? ""
         let repeatPassword = rpwTextField.text ?? ""
         
+        // 입력 검증
+        guard !email.isEmpty, !password.isEmpty, !repeatPassword.isEmpty else {
+            showAlert(title: "입력 오류", message: "모든 필드를 입력해주세요.") {
+            }
+            return
+        }
+        
+        guard password == repeatPassword else {
+            showAlert(title: "비밀번호 오류", message: "비밀번호가 일치하지 않습니다.") {
+            }
+            return
+        }
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
