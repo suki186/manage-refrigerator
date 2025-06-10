@@ -37,5 +37,28 @@ class ProfileViewController: UIViewController {
             IdLabel.text = "로그인이 필요합니다"
         }
     }
+    
+    @IBAction func logoutButtonTapped(_ sender: UIButton) {
+        do {
+           try Auth.auth().signOut()
+           
+           // 로그인 페이지로 이동
+           if let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
+               loginVC.modalPresentationStyle = .fullScreen
+               present(loginVC, animated: true, completion: nil)
+           }
+           
+       } catch let signOutError as NSError {
+           print("Error signing out: %@", signOutError)
+           
+           // 에러 알림 표시
+           let alert = UIAlertController(title: "로그아웃 실패",
+                                       message: "로그아웃 중 오류가 발생했습니다.",
+                                       preferredStyle: .alert)
+           alert.addAction(UIAlertAction(title: "확인", style: .default))
+           present(alert, animated: true)
+       }
+    }
+    
 
 }
