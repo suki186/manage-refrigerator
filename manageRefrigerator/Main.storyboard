@@ -573,8 +573,8 @@
                                 <rect key="frame" x="37" y="261" width="319" height="321"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="나의 계정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z81-8U-e18">
-                                        <rect key="frame" x="32" y="34" width="60" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z81-8U-e18">
+                                        <rect key="frame" x="32" y="34" width="17" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                         <nil key="textColor"/>
@@ -588,9 +588,6 @@
                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="10"/>
                                             <color key="baseForegroundColor" red="0.66254340277777779" green="0.27084671232181801" blue="0.16434267284412105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
-                                        <connections>
-                                            <action selector="logoutButtonTapped:" destination="ldg-Sw-gG9" eventType="touchUpInside" id="nXs-IG-j3U"/>
-                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-img2.png" translatesAutoresizingMaskIntoConstraints="NO" id="qTI-r9-6yD">
                                         <rect key="frame" x="47" y="116" width="225" height="145"/>
@@ -844,6 +841,9 @@
                                     <segment title="냉동"/>
                                     <segment title="실온"/>
                                 </segments>
+                                <connections>
+                                    <action selector="selectLocation:" destination="3ve-6C-Oa4" eventType="valueChanged" id="4WL-jE-bDW"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="카테고리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rH-4h-Isr">
                                 <rect key="frame" x="23" y="142" width="56" height="20"/>
@@ -878,6 +878,9 @@
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="baseBackgroundColor" red="0.33725491169999999" green="0.69803923369999998" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="registerButtonTapped:" destination="3ve-6C-Oa4" eventType="touchUpInside" id="n0T-Z4-EfZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xeh-aK-AY3">
                                 <rect key="frame" x="23" y="702" width="102" height="35"/>
@@ -891,6 +894,9 @@
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="baseBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="3ve-6C-Oa4" eventType="touchUpInside" id="dQm-84-G2O"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="소비기한" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkH-rN-OgZ">
                                 <rect key="frame" x="23" y="621" width="56" height="20"/>
@@ -920,7 +926,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="wpA-VY-cFl">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="wpA-VY-cFl">
                                 <rect key="frame" x="291" y="546" width="49" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -934,6 +940,9 @@
                                     <imageReference key="image" image="minus" catalog="system" symbolScale="small"/>
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="minusButtonTapped:" destination="3ve-6C-Oa4" eventType="touchUpInside" id="bdL-Qs-4mK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIE-Oc-cL0">
                                 <rect key="frame" x="348" y="546" width="28" height="34"/>
@@ -943,6 +952,9 @@
                                     <imageReference key="image" image="plus" catalog="system" symbolScale="small"/>
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="plusButtonTapped:" destination="3ve-6C-Oa4" eventType="touchUpInside" id="OjY-Ju-EJN"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cp3-Y4-Hhn">
                                 <rect key="frame" x="207" y="614" width="169" height="34"/>
@@ -956,8 +968,11 @@
                                             <imageReference key="image" image="calendar" catalog="system" symbolScale="small"/>
                                             <color key="baseForegroundColor" red="0.59595959595959602" green="0.59595959595959602" blue="0.59595959595959602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="dataButton:" destination="3ve-6C-Oa4" eventType="touchUpInside" id="Twp-Ts-223"/>
+                                        </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2025.09.03" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ilm-IW-z8h">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="날짜 선택" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ilm-IW-z8h">
                                         <rect key="frame" x="18" y="5" width="92" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -996,9 +1011,11 @@
                     <navigationItem key="navigationItem" id="crN-sr-XTA"/>
                     <connections>
                         <outlet property="collectionView" destination="cea-W3-7pI" id="UWr-Bf-8ky"/>
+                        <outlet property="dataLabel" destination="Ilm-IW-z8h" id="O0K-ld-WZv"/>
                         <outlet property="dateContainer" destination="Cp3-Y4-Hhn" id="FVR-em-hbr"/>
                         <outlet property="matNumField" destination="wpA-VY-cFl" id="rvt-5u-RCr"/>
                         <outlet property="matTextField" destination="BlP-pM-d6d" id="bCH-8c-0Mc"/>
+                        <outlet property="segmentControl" destination="rtc-z8-CcK" id="ykZ-D2-NtY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ho4-Pe-4CJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
