@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,17 +18,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        // 로그인 화면을 루트 뷰로 설정
-        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-        
-        // 윈도우 초기화 및 루트 설정
+        // 윈도우 초기화
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = loginVC
-        window?.makeKeyAndVisible()
-        
         // 탭 바 색상 설정
         UITabBar.appearance().tintColor = UIColor(red: 98/255, green: 209/255, blue: 239/255, alpha: 1.0)
         UITabBar.appearance().unselectedItemTintColor = UIColor.lightGray
+        
+        // 로그인 상태에 따른 초기 화면
+        if let currentUser = Auth.auth().currentUser {
+            // 로그인된 상태 - 메인 탭바로 이동
+            print("이미 로그인된 사용자: \(currentUser.email ?? "")")
+            
+            if let tabBarVC = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as? UITabBarController {
+                tabBarVC.selectedIndex = 2  // 기본 탭
+                window?.rootViewController = tabBarVC
+            }
+        } else {
+            // 로그인되지 않은 상태 - 로그인 화면으로
+            print("로그인되지 않음 - 로그인 화면 표시")
+            
+            let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            window?.rootViewController = loginVC
+        }
+        
+        window?.makeKeyAndVisible()
+        
+        
     }
 
 
