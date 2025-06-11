@@ -63,7 +63,21 @@ class CheckListViewController: UIViewController, UICollectionViewDataSource, UIC
         cell.checkText.text = item.title
         cell.checkButton.isSelected = item.isChecked
         
-        
+        if item.isChecked {
+            // 체크된 항목은 회색 + 밑줄
+            let attributed = NSAttributedString(
+                string: item.title,
+                attributes: [
+                    .foregroundColor: UIColor.lightGray,
+                    .strikethroughStyle: NSUnderlineStyle.single.rawValue
+                ])
+            cell.checkText.attributedText = attributed
+        } else {
+            // 체크 안 된 항목은 기본 스타일
+            cell.checkText.attributedText = NSAttributedString(string: item.title, attributes: [
+                .foregroundColor: UIColor.label
+            ])
+        }
         
         // 체크박스 토글
         cell.checkButtonTapped = { [weak self] in
