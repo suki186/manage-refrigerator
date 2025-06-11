@@ -25,21 +25,31 @@
                             <imageReference key="image" image="minus.circle" catalog="system" symbolScale="medium"/>
                             <color key="baseForegroundColor" red="0.830374053" green="0.19143020250000001" blue="0.1079597662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </buttonConfiguration>
+                        <connections>
+                            <action selector="deleteButtonAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="b2g-Jf-qFM"/>
+                        </connections>
                     </button>
                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zEF-Va-U7G">
                         <rect key="frame" x="55" y="4" width="246" height="34"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <action selector="textFieldDidChange:" destination="gTV-IL-0wX" eventType="editingDidEnd" id="EEa-pQ-1EE"/>
+                        </connections>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UKE-Jj-kdu">
                         <rect key="frame" x="12" y="4" width="35" height="35"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="tintColor" red="0.50196081400000003" green="0.8078432083" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain">
                             <imageReference key="image" image="checkmark.square" catalog="system" symbolScale="large"/>
                             <color key="baseForegroundColor" red="0.50196081400000003" green="0.8078432083" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </buttonConfiguration>
+                        <connections>
+                            <action selector="checkButtonAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="CSe-vc-xyh"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>
