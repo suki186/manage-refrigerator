@@ -6,19 +6,46 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-struct CheckItem {
+struct CheckItem: Codable {
     var title: String
     var isChecked: Bool
 }
 
 class CheckListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    var checkItems: [CheckItem] = [
-        CheckItem(title: "계란 한판", isChecked: false),
-        CheckItem(title: "우유 500ml", isChecked: true),
-        CheckItem(title: "당근 1봉지", isChecked: false)
-    ]
+    var userID: String {
+        return Auth.auth().currentUser?.uid ?? "not"
+    }
+    
+    var checkItems: [CheckItem] = [] // 체크리스트 목록
+    
+    // 사용자별 키 생성
+    func userDefaultsKey(for userID: String) -> String {
+        return "checklistItems_\(userID)"
+    }
+
+    // 저장
+    func saveCheckItems() {
+        if let data = try? JSONEncoder().encode(checkItems) {
+            UserDefaults.standard.set(data, forKey: userDefaultsKey(for: userID))
+        }
+    }
+
+    // 조회
+    func loadCheckItems() {
+        if let data = UserDefaults.standard.data(forKey: userDefaultsKey(for: userID)),
+           let savedItems = try? JSONDecoder().decode([CheckItem].self, from: data) {
+            checkItems = savedItems
+        } else {
+            // 처음 실행 시 빈 항목 1개
+            checkItems = [
+                CheckItem(title: "", isChecked: false)
+            ]
+            saveCheckItems()
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return checkItems.count
@@ -35,6 +62,62 @@ class CheckListViewController: UIViewController, UICollectionViewDataSource, UIC
         let item = checkItems[indexPath.item]
         cell.checkText.text = item.title
         cell.checkButton.isSelected = item.isChecked
+        
+        
+        
+        // 체크박스 토글
+        cell.checkButtonTapped = { [weak self] in
+            guard let self = self else { return }
+            self.checkItems[indexPath.item].isChecked.toggle()
+            self.saveCheckItems() // 저장
+            collectionView.reloadItems(at: [indexPath])
+        }
+        
+        let currentIndex = indexPath.item
+        cell.textFieldEdited = { [weak self] newText in
+            guard let self = self else { return }
+            guard currentIndex < self.checkItems.count else { return }
+            self.checkItems[currentIndex].title = newText
+            self.saveCheckItems()
+        }
+        
+        // 엔터 -> 새로운 체크리스트
+        cell.onEnterPressed = { [weak self] text in
+            guard let self = self else { return }
+            self.checkItems[indexPath.item].title = text
+            self.checkItems.append(CheckItem(title: "", isChecked: false))
+            self.saveCheckItems()
+            self.collectionView.reloadData()
+            
+            // 추가된 셀에 focus
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                let newIndex = IndexPath(item: self.checkItems.count - 1, section: 0)
+                if let newCell = self.collectionView.cellForItem(at: newIndex) as? ChecklistCollectionViewCell {
+                    newCell.focusTextField()
+                }
+            }
+        }
+        
+        // 삭제
+        cell.deleteButtonTapped = { [weak self] in
+            guard let self = self else { return }
+            self.checkItems.remove(at: indexPath.item)
+            
+            // 삭제 후 비었으면 빈 항목 추가
+            if self.checkItems.isEmpty {
+                self.checkItems.append(CheckItem(title: "", isChecked: false))
+            }
+            
+            self.saveCheckItems()
+            self.collectionView.reloadData()
+        }
+        
+        if item.title.isEmpty {
+            DispatchQueue.main.async {
+                cell.focusTextField()
+            }
+        }
+        
         return cell
     }
     
@@ -66,17 +149,12 @@ class CheckListViewController: UIViewController, UICollectionViewDataSource, UIC
             UINib(nibName: "ChecklistCollectionViewCell", bundle: nil),
             forCellWithReuseIdentifier: "ChecklistCell"
         )
+        
+        loadCheckItems() // 체크리스트
+        if checkItems.isEmpty {
+            checkItems.append(CheckItem(title: "", isChecked: false))
+            saveCheckItems()
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
