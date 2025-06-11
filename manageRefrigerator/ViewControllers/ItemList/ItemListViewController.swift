@@ -17,7 +17,7 @@ struct Ingredient {
     let expireDate: String  // 소비기한
 }
 
-class ItemListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ItemListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemListCellDelegate {
     
     var locationType: String = "" // 위치(냉장, 냉동, 실온)
     var items: [Ingredient] = [] // 재료 목록
@@ -34,7 +34,24 @@ class ItemListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         cell.configure(with: item)
+        cell.delegate = self // delegate 연결
         return cell
+    }
+    
+    // 개수 업데이트하는 delegate 함수
+    func didUpdateQuantity(for item: Ingredient, to newQuantity: Int) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let db = Firestore.firestore()
+        
+        let ref = db.collection("users").document(uid).collection(locationType).document(item.docID)
+        
+        ref.updateData(["count": newQuantity]) { error in
+            if let error = error {
+                print("개수 업데이트 실패: \(error.localizedDescription)")
+            } else {
+                print("개수 업데이트 성공: \(item.name) → \(newQuantity)")
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView,

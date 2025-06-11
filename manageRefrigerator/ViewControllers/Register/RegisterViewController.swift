@@ -92,7 +92,7 @@ class RegisterViewController: UIViewController, UICollectionViewDelegate, UIColl
     // 폼 초기화
     func resetForm() {
         matTextField.text = ""
-        matNumField.text = ""
+        matNumField.text = "1"
         selectedCategory = nil
         selectedDate = nil
         dataLabel.text = "날짜 선택"
