@@ -41,7 +41,7 @@ class ItemListCell: UITableViewCell {
         if quantity > 1 { // 최소 1
             quantity -= 1
             itemCount.text = "\(quantity)"
-            }
+        }
     }
     
     @IBAction func didTapPlus(_ sender: UIButton) {
