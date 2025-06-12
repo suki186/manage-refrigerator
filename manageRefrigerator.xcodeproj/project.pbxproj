@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38B06FFE1AE271EE25B44AF4 /* Pods_manageRefrigerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44215A86B7BEE7238E55A0A /* Pods_manageRefrigerator.framework */; };
 		BC8129332DF84D8A001580D3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BC8129322DF84D8A001580D3 /* FirebaseAuth */; };
 		BC8129352DF84D8A001580D3 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = BC8129342DF84D8A001580D3 /* FirebaseAuthCombine-Community */; };
 		BC8129372DF84D8A001580D3 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = BC8129362DF84D8A001580D3 /* FirebaseDatabase */; };
@@ -23,7 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		77F1A78BD7D08811B189F7B2 /* Pods-manageRefrigerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-manageRefrigerator.debug.xcconfig"; path = "Target Support Files/Pods-manageRefrigerator/Pods-manageRefrigerator.debug.xcconfig"; sourceTree = "<group>"; };
+		A17B4C3F1A312BE800B7CB18 /* Pods-manageRefrigerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-manageRefrigerator.release.xcconfig"; path = "Target Support Files/Pods-manageRefrigerator/Pods-manageRefrigerator.release.xcconfig"; sourceTree = "<group>"; };
 		BCC5D3062DE3FFE400A76A8F /* manageRefrigerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = manageRefrigerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D44215A86B7BEE7238E55A0A /* Pods_manageRefrigerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_manageRefrigerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -65,17 +69,37 @@
 				BC81293F2DF84D8A001580D3 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				BC8129472DF84D8A001580D3 /* FirebaseMessaging in Frameworks */,
 				BC8129412DF84D8A001580D3 /* FirebaseFirestoreSwift in Frameworks */,
+				38B06FFE1AE271EE25B44AF4 /* Pods_manageRefrigerator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		721F00C62A4CE73539E09FDE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				77F1A78BD7D08811B189F7B2 /* Pods-manageRefrigerator.debug.xcconfig */,
+				A17B4C3F1A312BE800B7CB18 /* Pods-manageRefrigerator.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		78D78D5DC7AD7493112C05C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D44215A86B7BEE7238E55A0A /* Pods_manageRefrigerator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BCC5D2FD2DE3FFE400A76A8F = {
 			isa = PBXGroup;
 			children = (
 				BCC5D3082DE3FFE400A76A8F /* manageRefrigerator */,
 				BCC5D3072DE3FFE400A76A8F /* Products */,
+				721F00C62A4CE73539E09FDE /* Pods */,
+				78D78D5DC7AD7493112C05C8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,9 +118,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCC5D3192DE3FFE500A76A8F /* Build configuration list for PBXNativeTarget "manageRefrigerator" */;
 			buildPhases = (
+				F095EB30096D0A38ADF00961 /* [CP] Check Pods Manifest.lock */,
 				BCC5D3022DE3FFE400A76A8F /* Sources */,
 				BCC5D3032DE3FFE400A76A8F /* Frameworks */,
 				BCC5D3042DE3FFE400A76A8F /* Resources */,
+				D371BBEAE98F13D158B047A3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -172,6 +198,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D371BBEAE98F13D158B047A3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-manageRefrigerator/Pods-manageRefrigerator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-manageRefrigerator/Pods-manageRefrigerator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-manageRefrigerator/Pods-manageRefrigerator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F095EB30096D0A38ADF00961 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-manageRefrigerator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BCC5D3022DE3FFE400A76A8F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -185,13 +253,20 @@
 /* Begin XCBuildConfiguration section */
 		BCC5D31A2DE3FFE500A76A8F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77F1A78BD7D08811B189F7B2 /* Pods-manageRefrigerator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DVF46BWY42;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = manageRefrigerator/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FRISH;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 권한 요청";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치 권한 요청";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 권한 요청";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -202,7 +277,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.manageRefrigerator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.suki.manageRefrigerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -212,13 +287,20 @@
 		};
 		BCC5D31B2DE3FFE500A76A8F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A17B4C3F1A312BE800B7CB18 /* Pods-manageRefrigerator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DVF46BWY42;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = manageRefrigerator/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FRISH;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 권한 요청";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치 권한 요청";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 권한 요청";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -229,7 +311,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.manageRefrigerator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.suki.manageRefrigerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
