@@ -9,14 +9,31 @@ import UIKit
 import NMapsMap
 import CoreLocation
 
+struct MartInfo {
+    let name: String
+    let address: String
+    let phone: String?
+    let placeURL: String
+}
+
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: NMFNaverMapView!
-
+    @IBOutlet weak var infoCardView: UIView!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    
     let locationManager = CLLocationManager()
+    var currentMartInfo: MartInfo?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        infoCardView.layer.cornerRadius = 12
+        infoCardView.layer.masksToBounds = true
+        infoCardView.isHidden = true
 
         // 네이버 지도 초기화 설정
         mapView.showZoomControls = true
@@ -69,6 +86,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 return
             }
             
+            if let data = data {
+                print("📦 응답 원문:")
+                print(String(data: data, encoding: .utf8) ?? "응답 디코딩 실패")
+            }
+            
             guard let data = data,
                   let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                   let documents = json["documents"] as? [[String: Any]] else {
@@ -96,7 +118,45 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     marker.height = 50
                     marker.iconImage = image
                     marker.mapView = self.mapView.mapView
-                    print("마커 생성: \(name) @ \(lat), \(lng)")
+                    //print("마커 생성: \(name) @ \(lat), \(lng)")
+                    
+                    let address = doc["road_address_name"] as? String ?? "주소 없음"
+                    let phoneRaw = doc["phone"] as? String
+                    let phone = (phoneRaw?.isEmpty == false) ? phoneRaw : "-"
+                    let placeURL = doc["place_url"] as? String ?? "https://map.kakao.com"
+
+                    let info = MartInfo(
+                        name: name,
+                        address: address,
+                        phone: phone,
+                        placeURL: placeURL
+                    )
+                    
+                    marker.userInfo["info"] = info
+                    
+                    // 마커 클릭 시
+                    marker.touchHandler = { [weak self] _ in
+                        guard let self = self else { return true }
+                        
+                        let update = NMFCameraUpdate(scrollTo: marker.position, zoomTo: 17)
+                        update.animation = .easeIn
+                        self.mapView.mapView.moveCamera(update)
+
+                        print("infoCardView 보이기")
+                        if let info = marker.userInfo["info"] as? MartInfo {
+                            self.nameLabel.text = info.name
+                            self.addressLabel.text = info.address
+                            self.phoneLabel.text = info.phone ?? "-"
+                            self.currentMartInfo = info
+                            
+                            print("🧩 카드 내용 바인딩 완료")
+                            self.infoCardView.alpha = 1
+                            self.infoCardView.isHidden = false
+                            print("📦 infoCardView 보여지도록 설정")
+                        }
+
+                        return true
+                    }
                 }
             }
         }.resume()
@@ -119,5 +179,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         mapView.mapView.positionMode = .direction
     }
     
-
+    @IBAction func openPlaceInBrowser(_ sender: UIButton) {
+        if let urlString = currentMartInfo?.placeURL,
+           let url = URL(string: urlString) {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func closeInfoCard(_ sender: UIButton) {
+        infoCardView.isHidden = true
+    }
+    
 }
