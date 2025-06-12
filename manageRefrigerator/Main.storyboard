@@ -323,6 +323,9 @@
                                 <buttonConfiguration key="configuration" style="plain" image="location.circle" catalog="system">
                                     <color key="baseForegroundColor" red="0.83037405303030298" green="0.19143020247455816" blue="0.10795976620753528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="currentLocationTapped:" destination="jmq-fu-YWB" eventType="touchUpInside" id="Qj5-4s-XFA"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VDV-HX-e32" customClass="NMFNaverMapView">
                                 <rect key="frame" x="16" y="86" width="361" height="544"/>

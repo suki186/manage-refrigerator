@@ -12,7 +12,7 @@ import CoreLocation
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: NMFNaverMapView!
-    
+
     let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
@@ -45,5 +45,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         // 한 번만 받아오고 중단
         locationManager.stopUpdatingLocation()
     }
+    
+    @IBAction func currentLocationTapped(_ sender: UIButton) {
+        guard let location = locationManager.location else {
+            print("⚠️ 현재 위치를 가져올 수 없습니다.")
+            return
+        }
+
+        let coord = NMGLatLng(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
+
+        let cameraUpdate = NMFCameraUpdate(scrollTo: coord, zoomTo: 16.0)
+        cameraUpdate.animation = .easeIn
+        mapView.mapView.moveCamera(cameraUpdate)
+
+        // 위치 추적 모드
+        mapView.mapView.positionMode = .direction
+    }
+    
 
 }
