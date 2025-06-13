@@ -12,16 +12,19 @@ class RecRecipeCardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageName: UILabel!
     
-    func configure(with recipe: Recipe) {
-        imageName.text = recipe.title
-        
-        // API에서 받은 이미지 URL 로드
-        if !recipe.imageUrl.isEmpty {
-            loadImage(from: recipe.imageUrl)
-        } else {
-            imageView.image = UIImage(named: "noimage")
+    func configure(title: String, imageUrl: String) {
+        imageName.text = title
+        if let url = URL(string: imageUrl) {
+
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: url) {
+                    DispatchQueue.main.async {
+                        self.imageView.image = UIImage(data: data)
+                    }
+                }
+            }
         }
-    }
+        }
     
     private func loadImage(from urlString: String) {
         guard let url = URL(string: urlString) else {

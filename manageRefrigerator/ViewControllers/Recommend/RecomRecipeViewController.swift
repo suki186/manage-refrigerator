@@ -17,9 +17,51 @@ struct CookRecipe: Codable {
     let RESULT: APIResult
 }
 
+extension RecipeRow {
+    func toDictionary() -> [String: String] {
+        var dict: [String: String] = [:]
+        let mirror = Mirror(reflecting: self)
+        
+        for child in mirror.children {
+            if let key = child.label {
+                if let value = child.value as? String {
+                    dict[key] = value
+                } else if let value = child.value as? String? {
+                    dict[key] = value ?? ""
+                }
+            }
+        }
+        return dict
+    }
+}
+
 struct RecipeRow: Codable {
     let RCP_NM: String // 메뉴명
     let ATT_FILE_NO_MAIN: String // 이미지경로(소)
+    let INFO_ENG: String // 열량
+    let RCP_PARTS_DTLS: String // 재료
+
+    // 만드는 법 단계별 (필요한 만큼)
+    let MANUAL01: String?
+    let MANUAL02: String?
+    let MANUAL03: String?
+    let MANUAL04: String?
+    let MANUAL05: String?
+    let MANUAL06: String?
+    let MANUAL07: String?
+    let MANUAL08: String?
+    let MANUAL09: String?
+    let MANUAL10: String?
+    let MANUAL11: String?
+    let MANUAL12: String?
+    let MANUAL13: String?
+    let MANUAL14: String?
+    let MANUAL15: String?
+    let MANUAL16: String?
+    let MANUAL17: String?
+    let MANUAL18: String?
+    let MANUAL19: String?
+    let MANUAL20: String?
 }
 
 struct APIResult: Codable {
@@ -27,23 +69,13 @@ struct APIResult: Codable {
     let CODE: String
 }
 
-struct Recipe {
-    let title: String
-    let imageUrl: String
-    
-    // API 데이터 생성자
-    init(from recipeRow: RecipeRow) {
-        self.title = recipeRow.RCP_NM
-        self.imageUrl = recipeRow.ATT_FILE_NO_MAIN
-    }
-}
-
 class RecomRecipeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     
-    var recipes: [Recipe] = [] // 추천 레시피 목록
+    var recipes: [RecipeRow] = [] // 추천 레시피 목록
+    var selectedRecipe: RecipeRow?
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return recipes.count
@@ -51,11 +83,24 @@ class RecomRecipeViewController: UIViewController, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecRecipeCardCell", for: indexPath) as? RecRecipeCardCollectionViewCell else {
-                return UICollectionViewCell()
-            }
-            let recipe = recipes[indexPath.item]
-            cell.configure(with: recipe)
-            return cell
+                    return UICollectionViewCell()
+                }
+        let recipe = recipes[indexPath.item]
+
+        cell.configure(title: recipe.RCP_NM, imageUrl: recipe.ATT_FILE_NO_MAIN)
+        return cell
+    }
+    
+    // 선택 -> 상세화면
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedRecipe = recipes[indexPath.item] // class-level 변수로 선언
+        performSegue(withIdentifier: "ShowRecipeDetail", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowRecipeDetail",
+           let detailVC = segue.destination as? RecRecipeDetailViewController {
+            detailVC.recipe = selectedRecipe
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
@@ -131,11 +176,11 @@ class RecomRecipeViewController: UIViewController, UICollectionViewDataSource, U
                 let apiResponse = try JSONDecoder().decode(APIResponse.self, from: data)
                 
                 if apiResponse.COOKRCP01.RESULT.CODE == "INFO-000" {
-                    let newRecipes = apiResponse.COOKRCP01.row?.map { Recipe(from: $0) } ?? []
+                    let newRecipes = apiResponse.COOKRCP01.row ?? []
                     DispatchQueue.main.async {
-                        self?.recipes = newRecipes
+                        self?.recipes = newRecipes // [RecipeRow] 타입
                         self?.collectionView.reloadData()
-                        
+
                         if newRecipes.isEmpty {
                             self?.showAlert(title: "검색 결과 없음", message: "입력한 키워드에 해당하는 레시피가 없습니다.") {
                                 self?.fetchRecipesFromAPI()
