@@ -416,40 +416,78 @@
             </objects>
             <point key="canvasLocation" x="-251.14503816793894" y="1643.661971830986"/>
         </scene>
-        <!--My Recipe View Controller-->
-        <scene sceneID="tBF-HZ-svm">
+        <!--Rec Recipe Detail View Controller-->
+        <scene sceneID="nsj-Fr-0kD">
             <objects>
-                <viewController id="1lS-vi-EMC" customClass="MyRecipeViewController" customModule="manageRefrigerator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="AwO-UX-pPV">
+                <viewController storyboardIdentifier="RecRecipeDetailViewController" id="KI6-Cy-Yo6" customClass="RecRecipeDetailViewController" customModule="manageRefrigerator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ntl-7W-ln3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="나만의 레시피" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tpt-oe-9jY">
-                                <rect key="frame" x="130" y="30" width="134" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="음식이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cs8-tM-SLM">
+                                <rect key="frame" x="16" y="30" width="361" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="netmarbleB" family="netmarble" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.33725491169999999" green="0.69803923369999998" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiG-EL-rZX">
-                                <rect key="frame" x="301" y="34" width="62" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="열랑: 800 kcal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sa-9d-TMK">
+                                <rect key="frame" x="146" y="249" width="101" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled">
-                                    <imageReference key="image" image="plus" catalog="system" symbolScale="medium"/>
-                                    <backgroundConfiguration key="background" cornerRadius="50"/>
-                                    <color key="baseBackgroundColor" red="0.50196081400000003" green="0.8078432083" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="준비물" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJr-tK-YT7">
+                                <rect key="frame" x="16" y="277" width="46" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="만드는 법" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IG5-yg-2po">
+                                <rect key="frame" x="16" y="407" width="63" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="만드는법 목록" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zaX-id-ygV">
+                                <rect key="frame" x="16" y="435" width="361" height="222"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="재료 목록" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rA3-mz-i6K">
+                                <rect key="frame" x="16" y="305" width="361" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iVg-WM-7Zn">
+                                <rect key="frame" x="66" y="75" width="260" height="166"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="XYV-h3-heo"/>
+                        <viewLayoutGuide key="safeArea" id="wpf-OX-pP9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="aVP-yK-iJG"/>
+                    <navigationItem key="navigationItem" id="F1W-WX-K4V"/>
+                    <connections>
+                        <outlet property="calorieLabel" destination="6sa-9d-TMK" id="o4v-cg-0UL"/>
+                        <outlet property="imageView" destination="iVg-WM-7Zn" id="1Bl-OM-CpE"/>
+                        <outlet property="ingredientLabel" destination="rA3-mz-i6K" id="Ku5-3J-JpR"/>
+                        <outlet property="stepsLabel" destination="zaX-id-ygV" id="SeG-Pm-6Op"/>
+                        <outlet property="titleLabel" destination="Cs8-tM-SLM" id="buF-ON-Jj2"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z1F-HB-xvW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="klD-Xg-gq4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1300" y="1644"/>
+            <point key="canvasLocation" x="-1300" y="1643.661971830986"/>
         </scene>
         <!--레시피-->
         <scene sceneID="8Rf-wB-CfW">
@@ -487,6 +525,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="searchRecipe:" destination="eyI-gs-vHD" eventType="editingDidEnd" id="CtO-sn-MPT"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3M-T3-5Bn">
                                 <rect key="frame" x="352" y="140" width="25" height="26"/>
@@ -496,6 +537,9 @@
                                     <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="medium"/>
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="searchButtonTapped:" destination="eyI-gs-vHD" eventType="touchUpInside" id="hdY-DG-sNt"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CXR-9I-PFj">
                                 <rect key="frame" x="26" y="192" width="345" height="559"/>
@@ -516,23 +560,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="165" height="140"/>
+                                        <connections>
+                                            <segue destination="KI6-Cy-Yo6" kind="show" identifier="ShowRecipeDetail" id="ECh-xI-gVm"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWZ-3Q-X0C">
-                                <rect key="frame" x="308" y="679" width="63" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="MY레시피" titleAlignment="center">
-                                    <backgroundConfiguration key="background" cornerRadius="50">
-                                        <color key="backgroundColor" red="0.33725491169999999" green="0.69803923369999998" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="12"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="1lS-vi-EMC" kind="show" id="He5-Hx-Xoi"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="n35-eY-U4C"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -541,8 +574,9 @@
                         <color key="badgeColor" red="0.33725491169999999" green="0.69803923369999998" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="MyRecipeButton" destination="BWZ-3Q-X0C" id="8Wl-0L-aWK"/>
                         <outlet property="collectionView" destination="CXR-9I-PFj" id="C0o-bm-HMc"/>
+                        <outlet property="searchButton" destination="g3M-T3-5Bn" id="1n7-JM-8wh"/>
+                        <outlet property="searchTextField" destination="Nn5-wz-ZtL" id="O4w-ut-fPD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="imQ-QS-Bg2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1231,6 +1265,9 @@
         <image name="timer" catalog="system" width="128" height="123"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <image name="xmark.circle" catalog="system" width="128" height="123"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
