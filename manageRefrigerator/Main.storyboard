@@ -416,41 +416,6 @@
             </objects>
             <point key="canvasLocation" x="-251.14503816793894" y="1643.661971830986"/>
         </scene>
-        <!--My Recipe View Controller-->
-        <scene sceneID="tBF-HZ-svm">
-            <objects>
-                <viewController id="1lS-vi-EMC" customClass="MyRecipeViewController" customModule="manageRefrigerator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="AwO-UX-pPV">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="나만의 레시피" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tpt-oe-9jY">
-                                <rect key="frame" x="130" y="30" width="134" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="netmarbleB" family="netmarble" pointSize="24"/>
-                                <color key="textColor" red="0.33725491169999999" green="0.69803923369999998" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiG-EL-rZX">
-                                <rect key="frame" x="301" y="34" width="62" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled">
-                                    <imageReference key="image" image="plus" catalog="system" symbolScale="medium"/>
-                                    <backgroundConfiguration key="background" cornerRadius="50"/>
-                                    <color key="baseBackgroundColor" red="0.50196081400000003" green="0.8078432083" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="XYV-h3-heo"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="aVP-yK-iJG"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z1F-HB-xvW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1300" y="1644"/>
-        </scene>
         <!--레시피-->
         <scene sceneID="8Rf-wB-CfW">
             <objects>
@@ -487,6 +452,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="searchRecipe:" destination="eyI-gs-vHD" eventType="editingDidEnd" id="CtO-sn-MPT"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3M-T3-5Bn">
                                 <rect key="frame" x="352" y="140" width="25" height="26"/>
@@ -496,6 +464,9 @@
                                     <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="medium"/>
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="searchButtonTapped:" destination="eyI-gs-vHD" eventType="touchUpInside" id="hdY-DG-sNt"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CXR-9I-PFj">
                                 <rect key="frame" x="26" y="192" width="345" height="559"/>
@@ -519,20 +490,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWZ-3Q-X0C">
-                                <rect key="frame" x="308" y="679" width="63" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="MY레시피" titleAlignment="center">
-                                    <backgroundConfiguration key="background" cornerRadius="50">
-                                        <color key="backgroundColor" red="0.33725491169999999" green="0.69803923369999998" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="12"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="1lS-vi-EMC" kind="show" id="He5-Hx-Xoi"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="n35-eY-U4C"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -541,8 +498,9 @@
                         <color key="badgeColor" red="0.33725491169999999" green="0.69803923369999998" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="MyRecipeButton" destination="BWZ-3Q-X0C" id="8Wl-0L-aWK"/>
                         <outlet property="collectionView" destination="CXR-9I-PFj" id="C0o-bm-HMc"/>
+                        <outlet property="searchButton" destination="g3M-T3-5Bn" id="1n7-JM-8wh"/>
+                        <outlet property="searchTextField" destination="Nn5-wz-ZtL" id="O4w-ut-fPD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="imQ-QS-Bg2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

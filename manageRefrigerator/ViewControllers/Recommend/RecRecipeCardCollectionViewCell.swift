@@ -66,5 +66,6 @@ class RecRecipeCardCollectionViewCell: UICollectionViewCell {
         imageView.image = nil
         imageName.text = nil
     }
+    
 
 }

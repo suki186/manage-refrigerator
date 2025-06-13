@@ -13,7 +13,7 @@ struct APIResponse: Codable {
 
 struct CookRecipe: Codable {
     let total_count: String
-    let row: [RecipeRow]
+    let row: [RecipeRow]?
     let RESULT: APIResult
 }
 
@@ -38,7 +38,10 @@ struct Recipe {
     }
 }
 
-class RecomRecipeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class RecomRecipeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+    
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
     
     var recipes: [Recipe] = [] // 추천 레시피 목록
     
@@ -60,21 +63,14 @@ class RecomRecipeViewController: UIViewController, UICollectionViewDataSource, U
         return CGSize(width: 165, height: 140)  // 셀 크기
     }
 
-    
-    @IBOutlet weak var MyRecipeButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        MyRecipeButton.layer.shadowColor = UIColor.black.cgColor
-        MyRecipeButton.layer.shadowOpacity = 0.2
-        MyRecipeButton.layer.shadowOffset = CGSize(width: 0, height: -2)
-        MyRecipeButton.layer.shadowRadius = 10
-        MyRecipeButton.layer.masksToBounds = false
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        searchTextField.delegate = self
 
         collectionView.register(
             UINib(nibName: "RecRecipeCardCollectionViewCell", bundle: nil),
@@ -85,9 +81,34 @@ class RecomRecipeViewController: UIViewController, UICollectionViewDataSource, U
 
     }
     
+    // 엔터 입력 시 검색
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        let keyword = textField.text ?? ""
+        fetchRecipesFromAPI(keyword: keyword) // 빈 값이면 전체 호출
+        textField.text = "" // 입력 초기화
+        
+        return true
+    }
+    
+    // 돋보기버튼 클릭 시 검색
+    @IBAction func searchButtonTapped(_ sender: Any) {
+        let keyword = searchTextField.text ?? ""
+        fetchRecipesFromAPI(keyword: keyword)
+        searchTextField.resignFirstResponder()
+        searchTextField.text = ""
+    }
+    
+    
     // 공공데이터 api 호출 함수
-    func fetchRecipesFromAPI() {
-        let urlString = "http://openapi.foodsafetykorea.go.kr/api/eb3cacd4a8154adda95d/COOKRCP01/json/1/5"
+    func fetchRecipesFromAPI(keyword: String = "") {
+        let baseURL = "http://openapi.foodsafetykorea.go.kr/api/eb3cacd4a8154adda95d/COOKRCP01/json/1/10"
+        var urlString = baseURL
+        
+        if !keyword.isEmpty {
+            let encoded = keyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            urlString += "/RCP_NM=\(encoded)"
+        }
         
         guard let url = URL(string: urlString) else {
             print("잘못된 URL")
@@ -110,15 +131,26 @@ class RecomRecipeViewController: UIViewController, UICollectionViewDataSource, U
                 let apiResponse = try JSONDecoder().decode(APIResponse.self, from: data)
                 
                 if apiResponse.COOKRCP01.RESULT.CODE == "INFO-000" {
-                    let newRecipes = apiResponse.COOKRCP01.row.map { Recipe(from: $0) }
-                    
+                    let newRecipes = apiResponse.COOKRCP01.row?.map { Recipe(from: $0) } ?? []
                     DispatchQueue.main.async {
                         self?.recipes = newRecipes
                         self?.collectionView.reloadData()
-                        print("\(newRecipes.count)개 레시피 로드 성공")
+                        
+                        if newRecipes.isEmpty {
+                            self?.showAlert(title: "검색 결과 없음", message: "입력한 키워드에 해당하는 레시피가 없습니다.") {
+                                self?.fetchRecipesFromAPI()
+                            }
+                        }
                     }
                 } else {
-                    print("API 에러: \(apiResponse.COOKRCP01.RESULT.MSG)")
+                    // INFO-200 같은 결과 없음 코드
+                    DispatchQueue.main.async {
+                        self?.recipes = []
+                        self?.collectionView.reloadData()
+                        self?.showAlert(title: "검색 결과 없음", message: "입력한 키워드에 해당하는 레시피가 없습니다.") {
+                            self?.fetchRecipesFromAPI()
+                        }
+                    }
                 }
                 
             } catch {
@@ -131,6 +163,14 @@ class RecomRecipeViewController: UIViewController, UICollectionViewDataSource, U
         }
         task.resume()
     }
+    
+    @IBAction func searchRecipe(_ sender: UITextField) {
+        if let keyword = searchTextField.text, !keyword.isEmpty {
+            fetchRecipesFromAPI(keyword: keyword)
+            searchTextField.resignFirstResponder()
+        }
+    }
+    
     
 
 }
