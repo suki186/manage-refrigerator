@@ -12,9 +12,26 @@ class AlertListCell: UITableViewCell {
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemMessage: UILabel!
     
-    func configure(with alert: Alert) {
+    func configure(with item: ExpiringItem) {
         itemImage.image = UIImage(systemName: "timer")
-        itemMessage.text = "[\(alert.category)-\(alert.itemName)]의 소비기한이 2일 남았습니다!"
+        
+        let deadlineText: String
+        let color: UIColor
+        
+        switch item.daysLeft {
+        case 2:
+            deadlineText = "2일 남았습니다!"
+            color = .systemYellow
+        case 0:
+            deadlineText = "오늘까지예요!"
+            color = .systemRed
+        default:
+            deadlineText = "임박!"
+            color = .systemGray
+        }
+
+        itemMessage.text = "[\(item.category) - \(item.itemName)]의 소비기한이 \(deadlineText)"
+        itemImage.tintColor = color
     }
     
     override func layoutSubviews() {
