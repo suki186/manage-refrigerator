@@ -75,8 +75,8 @@ class RefrigeratorManager {
 
         // 알림 시각: 오전 10:00
         var dateComponents = DateComponents()
-        dateComponents.hour = 17
-        dateComponents.minute = 12
+        dateComponents.hour = 10
+        dateComponents.minute = 0
 
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
 
