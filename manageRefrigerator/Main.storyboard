@@ -700,6 +700,9 @@
                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="10"/>
                                             <color key="baseForegroundColor" red="0.66254340277777779" green="0.27084671232181801" blue="0.16434267284412105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="logoutButtonTapped:" destination="ldg-Sw-gG9" eventType="touchUpInside" id="nJg-y3-eqf"/>
+                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-img2.png" translatesAutoresizingMaskIntoConstraints="NO" id="qTI-r9-6yD">
                                         <rect key="frame" x="47" y="116" width="225" height="145"/>
