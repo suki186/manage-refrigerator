@@ -7,32 +7,21 @@
 
 import UIKit
 
-struct Alert {
-    let category: String
-    let itemName: String
-}
-
 class AlertListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    // 예시 데이터
-    var alerts: [Alert] = [
-        Alert(category: "냉장", itemName: "당근"),
-        Alert(category: "냉장", itemName: "파프리카"),
-        Alert(category: "냉동", itemName: "초콜릿"),
-        Alert(category: "실온", itemName: "감자")
-    ]
+    var alerts: [ExpiringItem] = [] // 알림 데이터
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alerts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = alerts[indexPath.row]
+        let item = alerts[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlertCell", for: indexPath) as! AlertListCell
-                cell.configure(with: message)
-                return cell
+        cell.configure(with: item)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -50,6 +39,14 @@ class AlertListViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.rowHeight = 60
+        
+        // 알림 데이터 불러오기
+        RefrigeratorManager.shared.checkExpiringItems { fetchedAlerts in
+            self.alerts = fetchedAlerts
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     @IBAction func deleteAllAlerts(_ sender: UIButton) {
