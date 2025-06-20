@@ -147,7 +147,12 @@ class RecomRecipeViewController: UIViewController, UICollectionViewDataSource, U
     
     // 공공데이터 api 호출 함수
     func fetchRecipesFromAPI(keyword: String = "") {
-        let baseURL = "http://openapi.foodsafetykorea.go.kr/api/eb3cacd4a8154adda95d/COOKRCP01/json/1/10"
+        guard let apiKey = Bundle.main.infoDictionary?["RecipeAPIKey"] as? String else {
+            print("❌ Recipe API Key 로딩 실패")
+            return
+        }
+        
+        let baseURL = "http://openapi.foodsafetykorea.go.kr/api/\(apiKey)/COOKRCP01/json/1/10"
         var urlString = baseURL
         
         if !keyword.isEmpty {

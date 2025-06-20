@@ -67,6 +67,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func searchNearbyMartsFromKakao(lat: Double, lng: Double) {
+        guard let apiKey = Bundle.main.infoDictionary?["KakaoAPIKey"] as? String else {
+            print("❌ Kakao API Key 로딩 실패")
+            return
+        }
         let query = "마트"
         let urlString = "https://dapi.kakao.com/v2/local/search/keyword.json?query=\(query)&x=\(lng)&y=\(lat)&radius=1000"
 
@@ -78,17 +82,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue("KakaoAK 477d328e18d6f62aff8ea22d326cc0e4", forHTTPHeaderField: "Authorization")
+        request.addValue("KakaoAK \(apiKey)", forHTTPHeaderField: "Authorization")
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 print("요청 실패: \(error)")
                 return
-            }
-            
-            if let data = data {
-                print("📦 응답 원문:")
-                print(String(data: data, encoding: .utf8) ?? "응답 디코딩 실패")
             }
             
             guard let data = data,

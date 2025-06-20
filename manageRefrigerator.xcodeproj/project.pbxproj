@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		38B06FFE1AE271EE25B44AF4 /* Pods_manageRefrigerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44215A86B7BEE7238E55A0A /* Pods_manageRefrigerator.framework */; };
+		BC67E6CE2E05C03F0066E882 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = BC67E6CD2E05C0370066E882 /* .gitignore */; };
 		BC8129332DF84D8A001580D3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BC8129322DF84D8A001580D3 /* FirebaseAuth */; };
 		BC8129352DF84D8A001580D3 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = BC8129342DF84D8A001580D3 /* FirebaseAuthCombine-Community */; };
 		BC8129372DF84D8A001580D3 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = BC8129362DF84D8A001580D3 /* FirebaseDatabase */; };
@@ -21,13 +21,15 @@
 		BC8129472DF84D8A001580D3 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = BC8129462DF84D8A001580D3 /* FirebaseMessaging */; };
 		BC8129492DF84D8A001580D3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BC8129482DF84D8A001580D3 /* FirebaseStorage */; };
 		BC81294B2DF84D8A001580D3 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = BC81294A2DF84D8A001580D3 /* FirebaseStorageCombine-Community */; };
+		D5CA0657DADC7B70E6FA61F4 /* Pods_manageRefrigerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D949C71648EB2DEAE06045A /* Pods_manageRefrigerator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		77F1A78BD7D08811B189F7B2 /* Pods-manageRefrigerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-manageRefrigerator.debug.xcconfig"; path = "Target Support Files/Pods-manageRefrigerator/Pods-manageRefrigerator.debug.xcconfig"; sourceTree = "<group>"; };
-		A17B4C3F1A312BE800B7CB18 /* Pods-manageRefrigerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-manageRefrigerator.release.xcconfig"; path = "Target Support Files/Pods-manageRefrigerator/Pods-manageRefrigerator.release.xcconfig"; sourceTree = "<group>"; };
+		2B4115EE36BA02F216998323 /* Pods-manageRefrigerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-manageRefrigerator.release.xcconfig"; path = "Target Support Files/Pods-manageRefrigerator/Pods-manageRefrigerator.release.xcconfig"; sourceTree = "<group>"; };
+		4D949C71648EB2DEAE06045A /* Pods_manageRefrigerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_manageRefrigerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8943BA0BB20D8A6561ED7577 /* Pods-manageRefrigerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-manageRefrigerator.debug.xcconfig"; path = "Target Support Files/Pods-manageRefrigerator/Pods-manageRefrigerator.debug.xcconfig"; sourceTree = "<group>"; };
+		BC67E6CD2E05C0370066E882 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		BCC5D3062DE3FFE400A76A8F /* manageRefrigerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = manageRefrigerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D44215A86B7BEE7238E55A0A /* Pods_manageRefrigerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_manageRefrigerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -41,6 +43,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		BC2A5F602E05BC9900FF18FB /* Config */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Config;
+			sourceTree = "<group>";
+		};
 		BCC5D3082DE3FFE400A76A8F /* manageRefrigerator */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -69,37 +76,39 @@
 				BC81293F2DF84D8A001580D3 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				BC8129472DF84D8A001580D3 /* FirebaseMessaging in Frameworks */,
 				BC8129412DF84D8A001580D3 /* FirebaseFirestoreSwift in Frameworks */,
-				38B06FFE1AE271EE25B44AF4 /* Pods_manageRefrigerator.framework in Frameworks */,
+				D5CA0657DADC7B70E6FA61F4 /* Pods_manageRefrigerator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33C8660CF69C6798B1973CD8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4D949C71648EB2DEAE06045A /* Pods_manageRefrigerator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		721F00C62A4CE73539E09FDE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				77F1A78BD7D08811B189F7B2 /* Pods-manageRefrigerator.debug.xcconfig */,
-				A17B4C3F1A312BE800B7CB18 /* Pods-manageRefrigerator.release.xcconfig */,
+				8943BA0BB20D8A6561ED7577 /* Pods-manageRefrigerator.debug.xcconfig */,
+				2B4115EE36BA02F216998323 /* Pods-manageRefrigerator.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		78D78D5DC7AD7493112C05C8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D44215A86B7BEE7238E55A0A /* Pods_manageRefrigerator.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		BCC5D2FD2DE3FFE400A76A8F = {
 			isa = PBXGroup;
 			children = (
+				BC67E6CD2E05C0370066E882 /* .gitignore */,
+				BC2A5F602E05BC9900FF18FB /* Config */,
 				BCC5D3082DE3FFE400A76A8F /* manageRefrigerator */,
 				BCC5D3072DE3FFE400A76A8F /* Products */,
 				721F00C62A4CE73539E09FDE /* Pods */,
-				78D78D5DC7AD7493112C05C8 /* Frameworks */,
+				33C8660CF69C6798B1973CD8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,17 +127,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCC5D3192DE3FFE500A76A8F /* Build configuration list for PBXNativeTarget "manageRefrigerator" */;
 			buildPhases = (
-				F095EB30096D0A38ADF00961 /* [CP] Check Pods Manifest.lock */,
+				1E605D04A266AAC5E24F1CFC /* [CP] Check Pods Manifest.lock */,
 				BCC5D3022DE3FFE400A76A8F /* Sources */,
 				BCC5D3032DE3FFE400A76A8F /* Frameworks */,
 				BCC5D3042DE3FFE400A76A8F /* Resources */,
-				D371BBEAE98F13D158B047A3 /* [CP] Embed Pods Frameworks */,
+				2954387E990CD605C8BF3495 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				BC2A5F602E05BC9900FF18FB /* Config */,
 				BCC5D3082DE3FFE400A76A8F /* manageRefrigerator */,
 			);
 			name = manageRefrigerator;
@@ -193,30 +203,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC67E6CE2E05C03F0066E882 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D371BBEAE98F13D158B047A3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-manageRefrigerator/Pods-manageRefrigerator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-manageRefrigerator/Pods-manageRefrigerator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-manageRefrigerator/Pods-manageRefrigerator-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F095EB30096D0A38ADF00961 /* [CP] Check Pods Manifest.lock */ = {
+		1E605D04A266AAC5E24F1CFC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -238,6 +232,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2954387E990CD605C8BF3495 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-manageRefrigerator/Pods-manageRefrigerator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-manageRefrigerator/Pods-manageRefrigerator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-manageRefrigerator/Pods-manageRefrigerator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -253,7 +264,7 @@
 /* Begin XCBuildConfiguration section */
 		BCC5D31A2DE3FFE500A76A8F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77F1A78BD7D08811B189F7B2 /* Pods-manageRefrigerator.debug.xcconfig */;
+			baseConfigurationReference = 8943BA0BB20D8A6561ED7577 /* Pods-manageRefrigerator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -287,7 +298,7 @@
 		};
 		BCC5D31B2DE3FFE500A76A8F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A17B4C3F1A312BE800B7CB18 /* Pods-manageRefrigerator.release.xcconfig */;
+			baseConfigurationReference = 2B4115EE36BA02F216998323 /* Pods-manageRefrigerator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -321,6 +332,8 @@
 		};
 		BCC5D31C2DE3FFE500A76A8F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = BC2A5F602E05BC9900FF18FB /* Config */;
+			baseConfigurationReferenceRelativePath = Secret.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -385,6 +398,8 @@
 		};
 		BCC5D31D2DE3FFE500A76A8F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = BC2A5F602E05BC9900FF18FB /* Config */;
+			baseConfigurationReferenceRelativePath = Secret.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

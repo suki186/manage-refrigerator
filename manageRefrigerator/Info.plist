@@ -6,6 +6,10 @@
 	<string></string>
 	<key>NMFNcpKeyId</key>
 	<string>dn3hm8cr94</string>
+    <key>KakaoAPIKey</key>
+    <string>$(KAKAO_API_KEY)</string>
+    <key>RecipeAPIKey</key>
+    <string>$(RECIPE_API_KEY)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>netmarbleL.ttf</string>

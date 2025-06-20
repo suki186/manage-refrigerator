@@ -1,0 +1,12 @@
+# Xcode
+DerivedData/
+*.xcworkspace
+*.xcuserstate
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Secrets
+Config/Secret.xcconfig
+
