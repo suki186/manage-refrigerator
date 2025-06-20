@@ -8,5 +8,5 @@ Pods/
 Podfile.lock
 
 # Secrets
-Config/Secrets.xcconfig
+Config/Secret.xcconfig
 
