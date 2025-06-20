@@ -1,6 +1,7 @@
 # ❄️ 냉장고 재료 관리 서비스: Frish 🥕
 <p align="center">
 <img width="187" alt="스크린샷 2025-06-21 02 15 37" src="https://github.com/user-attachments/assets/4af987c7-a1bb-4ea5-bad3-4f85e1174689" />
+<img width="69" alt="스크린샷 2025-06-21 03 11 18" src="https://github.com/user-attachments/assets/5b2fbf89-4147-4806-bddb-6e5da23213cf" />
 </p>
 MapAPI: Naver Map, Kakao Map Search <br/>
 OpenAPI: https://www.data.go.kr/data/15060073/openapi.do <br/><br/>
