@@ -1,4 +1,4 @@
-# ❄️ 냉장고 관리 서비스: Frish 🥕
+# ❄️ 냉장고 재료 관리 서비스: Frish 🥕
 <p align="center">
 <img width="187" alt="스크린샷 2025-06-21 02 15 37" src="https://github.com/user-attachments/assets/4af987c7-a1bb-4ea5-bad3-4f85e1174689" />
 </p>
@@ -26,7 +26,7 @@ https://youtu.be/Ov1ndLB0psQ
 	
 - **마트 체크리스트, 지도**
 	- 마트에서 살 품목 체크리스트 기능
-	- 현재 위치 1KM 반경 내 마트를 지도에서 조회
+	- 현재 위치 1km 반경 내 마트를 지도에서 조회
 	
 - **소비기한 임박 푸시알림**
 	- 소비기한이 2일 전, 당일인 품목 푸시알림
@@ -67,4 +67,4 @@ https://youtu.be/Ov1ndLB0psQ
 (Storyboard)
 
 **Tools & Services**<br/>
-<img src="https://img.shields.io/badge/Firebase-DD2C00?style=for-the-badge&logo=Firebase&logoColor=white"> <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white"> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white">
+<img src="https://img.shields.io/badge/Firebase-DD2C00?style=for-the-badge&logo=Firebase&logoColor=white"> <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white"> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"> <img src="https://img.shields.io/badge/Figma-EC5990?style=for-the-badge&logo=Figma&logoColor=white">
