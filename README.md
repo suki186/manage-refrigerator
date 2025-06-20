@@ -61,6 +61,13 @@ https://youtu.be/Ov1ndLB0psQ
 
 <br/>
 
+## 🆙 추가하고 싶은 기능
+- 추천 레시피 찜 & 찜한 레시피만 필터링
+- 나만의 레시피 메모 추가
+- 앱스토어 배포
+
+<br/>
+
 ## ⚙️ 개발 환경
 **Environment & Language**<br/>
 <img src="https://img.shields.io/badge/Xcode-147EFB?style=for-the-badge&logo=Xcode&logoColor=white"> <img src="https://img.shields.io/badge/Cocoapods-EE3322?style=for-the-badge&logo=Cocoapods&logoColor=white"> <img src="https://img.shields.io/badge/Swift-F05138?style=for-the-badge&logo=Swift&logoColor=white">
